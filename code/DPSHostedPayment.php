@@ -143,12 +143,12 @@ class DPSHostedPayment extends Payment{
 		
 		//provide iframe with payment gateway form in it	
 		if(self::$use_iframe){
-			return new Payment_Processing(array(
+			return EcommercePayment_Processing::create(array(
 				'Content' => "<iframe src =\"$url\" width=\"100%\" height=\"380\" frameborder=\"0\" name=\"payframe\"><a href=\"$url\">"._t('DPSHostedPayment.CLICKHERE',"click here to pay")."</a></iframe>"
 			));
 		}
 		Director::redirect($url);
-		return new Payment_Processing();
+		return EcommercePayment_Processing::create();
 	}
 	
 	/**
